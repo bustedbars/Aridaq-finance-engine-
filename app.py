@@ -105,11 +105,17 @@ with input_panel:
         run_engine = st.form_submit_button("EXECUTE SYSTEM MODEL")
 
 # === 2. RIGHT SIDE: HIGH-IMPACT METRICS & GRAPH MATRIX ===
-with output_col := output_panel:
+# === 2. RIGHT SIDE: HIGH-IMPACT METRICS & GRAPH MATRIX ===
+output_col = output_panel
+with output_col:
     st.subheader("📊 Execution Output Panel")
     
     if run_engine:
         start_clock = time.perf_counter()
+        
+        # --- PARSING NODE MATRIX DATA ---
+        costs = df_editable["Capital Requirement ($M)"].values
+
         
         # --- PARSING NODE MATRIX DATA ---
         costs = df_editable["Capital Requirement ($M)"].values
